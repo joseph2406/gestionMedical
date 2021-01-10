@@ -1,0 +1,184 @@
+<div class="card">
+    <div class="card-body">
+        <!-- title -->
+        <div class="d-md-flex align-items-center">
+            <div>
+                <h4 class="card-title">Liste Des Patients</h4>
+                <h5 class="card-subtitle"></h5>
+            </div>
+            <div class="ml-auto">
+                <div class="dl">
+                    <select class="custom-select">
+                        <option value="0" selected>Monthly</option>
+                        <option value="1">Daily</option>
+                        <option value="2">Weekly</option>
+                        <option value="3">Yearly</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- title -->
+    </div>
+    <div class="table-responsive">
+        <table class="table v-middle">
+            <thead>
+                <tr class="bg-light">
+                    <th class="border-top-0">Prénom et Nom</th>
+                    <th class="border-top-0">Cin</th>
+                    <th class="border-top-0">Date De Naissance</th>
+                    <th class="border-top-0">Adresse</th>
+                    <th class="border-top-0">Profession</th>
+                    <th class="border-top-0">Cnam</th>
+                    <th class="border-top-0">Date Fin Validité</th>
+                    <th class="border-top-0">GSM</th>
+                    <th class="border-top-0">Detail</th>
+                    <th class="border-top-0">Action</th>
+
+                </tr>
+            </thead>
+            <tbody *ngIf="patients">
+                <tr *ngFor="let p of patients; let i=index">
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <a *ngIf="p.prenomp[0] == 'a' || p.prenomp[0] == 'A' || p.prenomp[0] == 'c' || p.prenomp[0] == 'C'"
+                                    class="btn btn-circle btn-info text-white"> {{p.prenomp[0]}}</a>
+                                <a *ngIf="p.prenomp[0] == 'b' || p.prenomp[0] == 'B' || p.prenomp[0] == 'd' || p.prenomp[0] == 'D'" class="btn btn-circle btn-orange text-white">
+                                    {{p.prenomp[0]}}</a>
+                                <a *ngIf="p.prenomp[0] == 'y' || p.prenomp[0] == 'Y' || p.prenomp[0] == 'e' || p.prenomp[0] == 'E'" class="btn btn-circle btn-success text-white">
+                                    {{p.prenomp[0]}}</a>
+                                <a *ngIf="p.prenomp[0] == 'o' || p.prenomp[0] == 'O' || p.prenomp[0] == 'f' || p.prenomp[0] == 'F'" class="btn btn-circle btn-purple text-white">
+                                    {{p.prenomp[0]}}</a>
+                                <a *ngIf="p.prenomp[0] == 'g' || p.prenomp[0] == 'G' || p.prenomp[0] == 'k' || p.prenomp[0] == 'K'" class="btn btn-circle btn-danger text-white">
+                                        {{p.prenomp[0]}}</a>
+                                 <a *ngIf="p.prenomp[0] == 'h' || p.prenomp[0] == 'H' || p.prenomp[0] == 'l' || p.prenomp[0] == 'L'" class="btn btn-circle btn-warning text-white">
+                                            {{p.prenomp[0]}}</a>
+                                <a *ngIf="p.prenomp[0] == 'i' || p.prenomp[0] == 'I' || p.prenomp[0] == 'm' || p.prenomp[0] == 'M'" class="btn btn-circle btn-secondary text-white">
+                                                {{p.prenomp[0]}}</a>
+                                                <a *ngIf="p.prenomp[0] == 'z' || p.prenomp[0] == 'Z' || p.prenomp[0] == 's' || p.prenomp[0] == 'S'"
+                                                class="btn btn-circle btn-info text-white"> {{p.prenomp[0]}}</a>
+                                            <a *ngIf="p.prenomp[0] == 'p' || p.prenomp[0] == 'P' || p.prenomp[0] == 't' || p.prenomp[0] == 'T'" class="btn btn-circle btn-orange text-white">
+                                                {{p.prenomp[0]}}</a>
+                                            <a *ngIf="p.prenomp[0] == 'n' || p.prenomp[0] == 'N' || p.prenomp[0] == 'r' || p.prenomp[0] == 'R'" class="btn btn-circle btn-success text-white">
+                                                {{p.prenomp[0]}}</a>
+                                            <a *ngIf="p.prenomp[0] == 'u' || p.prenomp[0] == 'U' || p.prenomp[0] == 'x' || p.prenomp[0] == 'X'" class="btn btn-circle btn-purple text-white">
+                                                {{p.prenomp[0]}}</a>
+                                            <a *ngIf="p.prenomp[0] == 'q' || p.prenomp[0] == 'Q' || p.prenomp[0] == 'v' || p.prenomp[0] == 'V'" class="btn btn-circle btn-danger text-white">
+                                                    {{p.prenomp[0]}}</a>
+                                             <a *ngIf="p.prenomp[0] == 'w' || p.prenomp[0] == 'W' || p.prenomp[0] == 'j' || p.prenomp[0] == 'J'" class="btn btn-circle btn-warning text-white">
+                                                        {{p.prenomp[0]}}</a>
+                            </div>
+                            <div class="">
+                                <h4 class="m-b-0 font-16">{{p.prenomp}} {{p.nomp}}</h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{p.cin}}</td>
+                    <td>
+                        <center>{{p.datenaissp|date:'mediumDate'}}</center>
+                    </td>
+                    <td> {{p.adressep}}</td>
+                    <td>{{p.professionp}}</td>
+                    <td *ngIf="!p.cnam"><label class="badge badge-danger">Non Cnamé</label></td>
+                    <td *ngIf="p.cnam"><label class="badge badge-success">{{p.cnam.matcnam}}</label></td>
+                    <td *ngIf="!p.cnam"><label class="badge badge-danger">99/99/99</label></td>
+                    <td *ngIf="p.cnam"><label
+                            class="badge badge-success">{{p.cnam.datefinvalid|date:'mediumDate'}}</label></td>
+                    <td>{{p.numtelp}}</td>
+                    <td><button type="button" class="btn btn-outline-info btn-rounded"
+        (click)=" passerListRdv(p.rdv,p.antecedants,p.apci)"><i class="fa fa-heart"></i> Info</button></td>
+           
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+        <div class="col-md-4 col-sm-6 grid-margin stretch-card" *ngIf="totalElement">
+            <div class="card" >
+              <div class="card-body">
+                  <b>
+                <ngb-pagination [collectionSize]="totalElement" [pageSize]="size" [(page)]="page" 
+                aria-label="Default pagination" class="d-flex justify-content-center pagination-primary" 
+               ></ngb-pagination></b>
+              </div>
+            </div>
+          </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <!-- Card -->
+
+                    <div class="table-responsive">
+                        <table class="table v-middle" *ngIf="listRdv">
+                            <thead>
+                                <h4 class="card-title">Liste des Rendez-vous Par Patient</h4>
+                                <tr class="bg-light">
+                                    <th class="border-top-0">Date Rendez-vous</th>
+                                    <th class="border-top-0">Heure Rendez-vous</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of listRdv">
+                                    <td>{{list.daterdv|date:'mediumDate'}}</td>
+                                    <td>{{list.heure|date:'shortTime'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Card -->
+
+                    <div class="table-responsive">
+                        <table class="table v-middle" *ngIf="listAtcd">
+                            <thead>
+                                <h4 class="card-title">&nbsp;&nbsp; Liste des Antécédents Par Patient</h4>
+                                <tr class="bg-light">
+                                    <th class="border-top-0">Type Antécédent</th>
+                                    <th class="border-top-0">Description</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list1 of listAtcd">
+                                    <td>{{list1.categant}}</td>
+                                    <td>{{list1.descant}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <!-- Card -->
+
+                    <div class="table-responsive">
+                        <table class="table v-middle" *ngIf="listApci">
+                            <thead>
+                                <h4 class="card-title">Liste des APCI</h4>
+                                <tr class="bg-light">
+                                    <th class="border-top-0">Code APCI</th>
+                                    <th class="border-top-0">Date Début APCI</th>
+                                    <th class="border-top-0">Date Fin APCI</th>
+                                    <th class="border-top-0">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of listApci">
+                                    <td>{{list.codeap}}</td>
+                                    <td>{{list.datedap|date:'mediumDate'}}</td>
+                                    <td>{{list.datefap|date:'mediumDate'}}</td>
+                                    <td>{{list.description}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
