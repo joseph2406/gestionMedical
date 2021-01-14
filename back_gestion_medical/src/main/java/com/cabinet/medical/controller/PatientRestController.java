@@ -1,8 +1,8 @@
 package com.cabinet.medical.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +27,11 @@ public class PatientRestController {
 		return patientservice.savePatient(p);
 	}
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
-	public List<Patient> listPatient() throws NoDataFoundException {
-		return patientservice.listPatient();
+
+	public Page<Patient> listPatient(@RequestParam(name = "page", defaultValue = "0") int page,
+	@RequestParam(name = "size", defaultValue = "5") int size) throws NoDataFoundException {
+		// TODO Auto-generated method stub
+		return patientservice.listPatientValid(PageRequest.of(page, size));
 	}
 	@RequestMapping(value = "/patients/{cin}", method = RequestMethod.GET)
 	public Patient getPatient(@PathVariable String cin) throws EntiteNotFoundException {

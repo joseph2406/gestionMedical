@@ -49,6 +49,8 @@ public class Patient implements Serializable {
 	String adressep;
 	@Column(name = "NUMTELP")
 	String numtelp;
+	@Column(name = "VALID")
+	boolean valid;
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("patient")
@@ -70,7 +72,7 @@ public class Patient implements Serializable {
 
 
 	public Patient(String cin, String nomp, String prenomp, Date datenaissp, Date datecreaD, String sexep,
-			String professionp, String adressep, String numtelp) {
+			String professionp, String adressep, String numtelp,boolean valid) {
 		super();
 		this.cin = cin;
 		this.nomp = nomp;
@@ -81,6 +83,15 @@ public class Patient implements Serializable {
 		this.professionp = professionp;
 		this.adressep = adressep;
 		this.numtelp = numtelp;
+		this.valid=valid;
+	}
+
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 
 	public Patient() {

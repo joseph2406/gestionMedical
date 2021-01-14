@@ -20,9 +20,10 @@ import { NgbdtabsBasicComponent } from './tabs/tabs.component';
 import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
-import { ToastComponent } from './toast/toast.component';
-import { ToastsContainer } from './toast/toast-container';
+
 import { NouvPatientComponent } from './nouv-patient/nouv-patient.component';
+import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { DeletePatientMessageComponent } from './delete-patient-message/delete-patient-message.component';
 
 @NgModule({
   imports: [
@@ -47,9 +48,9 @@ import { NouvPatientComponent } from './nouv-patient/nouv-patient.component';
     NgbdtimepickerBasicComponent,
     ButtonsComponent,
     CardsComponent,
-    ToastComponent,
-    ToastsContainer,
-    NouvPatientComponent
+    NouvPatientComponent,
+    UpdatePatientComponent,
+    DeletePatientMessageComponent
   ]
 })
 export class ComponentsModule {}

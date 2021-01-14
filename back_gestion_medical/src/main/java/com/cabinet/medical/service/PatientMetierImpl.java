@@ -3,6 +3,8 @@ package com.cabinet.medical.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,11 +29,10 @@ public class PatientMetierImpl implements PatientMetier {
 		 
 		return patientdao.save(p);
 	}
-
 	@Override
-	public List<Patient> listPatient() throws NoDataFoundException{
+	public Page<Patient> listPatient(Pageable pageable) throws NoDataFoundException{
 		// TODO Auto-generated method stub
-		List<Patient> lp=patientdao.findAll();
+		Page<Patient> lp=(Page<Patient>) patientdao.findAll(pageable);
 		 if (lp.isEmpty()) {
 
 	            throw new NoDataFoundException();
@@ -57,5 +58,15 @@ public class PatientMetierImpl implements PatientMetier {
 	public Patient updatePatient(Patient patient) {
 		// TODO Auto-generated method stub
 		return patientdao.save(patient);
+	}
+	@Override
+	public Page<Patient> listPatientValid(Pageable pageable) throws NoDataFoundException {
+		// TODO Auto-generated method stub
+		Page<Patient> lp=(Page<Patient>) patientdao.listPatientValid(pageable);
+		 if (lp.isEmpty()) {
+
+	            throw new NoDataFoundException();
+	        }
+		 return lp;
 	}
 }

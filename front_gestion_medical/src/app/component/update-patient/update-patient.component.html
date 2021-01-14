@@ -1,27 +1,27 @@
-<div class="card">
+<div class="card" >
     <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="panel panel-default">
-            <h4 class="card-title">Nouveau Patient</h4>
-            <div class="panel-body">
-                <form #f="ngForm" (ngSubmit)="onSavePatient(f.value)">
+            <h4 class="card-title">Mise à Jour Patient</h4>
+            <div class="panel-body" *ngIf="patient">
+                <form #f="ngForm" (ngSubmit)="onEditPatient(f.value)">
                     <div class="row mb-3">
                         <div class="col">
-                          <input type="text" class="form-control" name="prenom" placeholder="Prénom" ngModel #prenom=ngModel required>
+                          <input type="text" class="form-control" name="prenom" [(ngModel)]="patient.prenomp" ngModel #prenom=ngModel required>
                         </div>
                         <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger">Prenom obligatoire</div>
                         <div class="col">
-                          <input type="text" class="form-control" name="nom" ngModel #nom=ngModel placeholder="Nom" required>
+                          <input type="text" class="form-control" name="nom"  [(ngModel)]="patient.nomp" ngModel #nom=ngModel required>
                         </div>
                         <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">Nom obligatoire</div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                          <input type="text" class="form-control"  name="cin" ngModel #cin=ngModel required pattern="[0-9]{8}" placeholder="Cin">
+                          <input type="text" class="form-control"  name="cin"  [(ngModel)]="patient.cin" ngModel #cin=ngModel required pattern="[0-9]{8}">
                         </div>
                         <div *ngIf="cin.errors?.pattern" class="alert alert-danger">cin non valide</div>
                         <div *ngIf="cin.invalid && (cin.dirty || cin.touched)" class="alert alert-danger">Cin obligatoire</div>
                         <div class="col">
-                          <input type="text" class="form-control"  name="telp" ngModel #telp=ngModel required pattern="[0-9]{8}" placeholder="GSM">
+                          <input type="text" class="form-control"  name="telp"  [(ngModel)]="patient.numtelp" ngModel #telp=ngModel required pattern="[0-9]{8}">
                         </div>
                         <div *ngIf="telp.invalid && (telp.dirty || telp.touched)" class="alert alert-danger">N° de Telephone obligatoire</div>
                         <div *ngIf="telp.errors?.pattern" class="alert alert-danger">Numero Telephone non valide</div>
@@ -29,29 +29,30 @@
                     <p></p>
                     <div class="row mb-3">
                         <div class="col">
-                            <select class=form-control name="sexe" ngModel #sexe=ngModel required>
-                                <option  value="" disabled selected hidden>Sexe</option>
+                            <select class=form-control name="sexe" ngModel #sexe=ngModel>
+                                <option  value="" disabled selected hidden required>{{patient.sexep}}</option>
                                 <option value="Masculin">Masculin</option>
                                 <option value="Féminin">Féminin</option>
                               </select>
                         </div>
                         <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)" class="alert alert-danger">Sexe obligatoire</div>
                         <div class="col">
-                          <input type="text" class="form-control" name="profession" ngModel #profession=ngModel placeholder="Profession">
+                          <input type="text" class="form-control" name="profession" [(ngModel)]="patient.professionp" ngModel #profession=ngModel>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                          <input type="date" class="form-control" name="datenaiss" ngModel #datenaiss=ngModel required>
+                          <input type="date" class="form-control" name="datenaiss"  [ngModel]="patient.datenaissp|date:'yyyy-MM-dd'"  ngModel #datenaiss=ngModel required> 
                         </div>
                         <div *ngIf="datenaiss.invalid && (datenaiss.dirty || datenaiss.touched)" class="alert alert-danger">Date de Naissance obligatoire</div>
                         <div class="col">
-                          <input type="text" class="form-control" name="adresse" ngModel #adresse=ngModel placeholder="Adresse">
+                          <input type="text" class="form-control" name="adresse" [(ngModel)]="patient.adressep"  ngModel #adresse=ngModel>
                         </div>
                     </div>
                     <p></p>
                         <div class="form-group">
-                            <button class="btn btn-outline-success btn-rounded" type="submit" [disabled]="!f.valid"><i class="fa fa-check"></i>Ajouter</button>
+                            <button class="btn btn-outline-success btn-rounded" type="submit" [disabled]="!f.valid"><i class="fa fa-check"></i>Mettre à Jour</button>
+                            &nbsp; <button class="btn btn-outline-secondary btn-rounded" (click)="btnCancel()">Cancel</button>
                         </div>
                    
                 </form>

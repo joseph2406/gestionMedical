@@ -21,4 +21,13 @@ export class PatientServService {
     let password="1234"
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) }); */
     return this.httpClient.post(this.host+"patients",p)}
+    public getPatientByCin(cin:string){
+      return this.httpClient.get<Patient>(this.host+"patients/"+cin)
+    }
+    public updatePatient(patient:Patient){
+      return this.httpClient.put(this.host+"patients",patient)
+    }
+    public deletePatient(patient:Patient){
+      return this.httpClient.put(this.host+"patients",patient)
+    }
 }

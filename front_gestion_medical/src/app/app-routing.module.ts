@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NouvPatientComponent } from './component/nouv-patient/nouv-patient.component';
+import { UpdatePatientComponent } from './component/update-patient/update-patient.component';
 
 import { FullComponent } from './layouts/full/full.component';
 
@@ -11,6 +12,7 @@ export const Approutes: Routes = [
     component: FullComponent,
     children: [
       { path: 'Npatient', pathMatch: 'full', component: NouvPatientComponent}, 
+      { path: 'Updatepatient/:cin', component:UpdatePatientComponent}, 
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',

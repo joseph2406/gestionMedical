@@ -23,15 +23,14 @@ export class NouvPatientComponent implements OnInit {
   onSavePatient(data:any){
   console.log(data)
      this.p=new Patient(data.cin,data.nom,data.prenom,data.datenaiss,
-      this.date,data.sexe,data.profession,data.adresse,data.telp)
-      console.log(this.p.cin)
+      this.date,data.sexe,data.profession,data.adresse,data.telp,true)
       this.servpatient.creerPatient(this.p).subscribe(res => {
-        this.toast.showSuccess("******************Patient Ajouté avce succée**********************");
+        this.toast.showSuccess("Patient Ajouté avce succée");
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');
         }, 1000);
       }, err => {
-        this.toast.showWarning("--------------------------------------------------"+err.error.message);
+        this.toast.showWarning(err.error.message);
       })
   }
 }

@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noImplicitAny": false,
     "baseUrl": "./",
     "module": "es2020",
     "outDir": "./dist/out-tsc",

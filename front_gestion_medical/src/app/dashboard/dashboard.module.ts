@@ -9,6 +9,7 @@ import { FeedsComponent } from './dashboard-components/feeds/feeds.component';
 import { TopSellingComponent } from './dashboard-components/top-selling/top-selling.component';
 import { RecentCommentsComponent } from './dashboard-components/recent-comments/recent-comments.component';
 import { TempGuideComponent } from './dashboard-components/temp-guide/temp-guide.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [FormsModule, CommonModule, RouterModule.forChild(routes), ChartsModule],
+  imports: [FormsModule, CommonModule, RouterModule.forChild(routes), ChartsModule,NgbModule],
   declarations: [DashboardComponent, SalesSummaryComponent, FeedsComponent, TopSellingComponent, RecentCommentsComponent, TempGuideComponent]
 })
 export class DashboardModule {

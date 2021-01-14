@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Supprimer Patient</h4>
+      <div class="card card-inverse-secondary mb-5">
+        <div class="card-body">
+          <p class="mb-4">
+            Etes-vous sur de vouloir supprimer ce Patient {{data.patient.prenomp}}         </p>
+          <button class="btn btn-secondary" (click)="confirmDelete(data.patient)">Confirmer</button>
+          <button class="btn btn-light" (click)="close()">Annuler</button>
+        </div>
+      </div>   
+    </div>
+  </div>

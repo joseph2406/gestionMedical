@@ -14,7 +14,7 @@ import { NgbdtabsBasicComponent } from './tabs/tabs.component';
 import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
-import { ToastComponent } from './toast/toast.component';
+
 import { NouvPatientComponent } from './nouv-patient/nouv-patient.component';
 
 export const ComponentsRoutes: Routes = [
@@ -199,13 +199,6 @@ export const ComponentsRoutes: Routes = [
 						{ title: 'ngComponent' },
 						{ title: 'Button' }
 					]
-				}
-			},
-			{
-				path: 'toast',
-				component: ToastComponent,
-				data: {
-					title: 'Toast',
 				}
 			}
 		]
