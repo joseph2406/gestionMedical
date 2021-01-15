@@ -33,5 +33,13 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
+  },
+  {
+    path: '/NAntecedant',
+    title: 'Nouvel antecedant',
+    icon: 'mdi mdi-folder-account',
+    class: '',
+    extralink: false,
+    submenu: []
   }
 ];
