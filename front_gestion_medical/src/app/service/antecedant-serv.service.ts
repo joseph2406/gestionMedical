@@ -11,14 +11,14 @@ export class AntecedantServService {
   errorMsg!: string;
   public getAntecedant() {
 
-    return this.httpClient.get<Antecedant[]>(this.host + "antecedants")
+    return this.httpClient.get<Antecedant[]>(this.host + "antecedant")
   }
   public creerAntecedant(ant: Antecedant) {
 
     return this.httpClient.post(this.host + "antecedant", ant)
   }
 
-  public getAntecedantByCin(id: number) {
+  public getAntecedantById(id: number) {
     return this.httpClient.get<Antecedant>(this.host + "antecedant/" + id)
   }
   public updateAntecedant(antecedant: Antecedant) {

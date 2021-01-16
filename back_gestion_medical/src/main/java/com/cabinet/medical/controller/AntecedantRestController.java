@@ -23,7 +23,7 @@ public class AntecedantRestController {
 	AntecedantMetier antecedantMetier;
 
 	@RequestMapping(value = "/antecedant", method = RequestMethod.POST)
-	public Antecedant addCategorie(@RequestBody Antecedant ant) {
+	public Antecedant addAntecedant(@RequestBody Antecedant ant) {
 		return antecedantMetier.createAntecedant(ant);
 	}
 

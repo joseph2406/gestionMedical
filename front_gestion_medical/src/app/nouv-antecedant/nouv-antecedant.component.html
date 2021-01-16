@@ -4,7 +4,7 @@
         <div class="panel panel-default">
             <h4 class="card-title">Nouvel antecedant</h4>
             <div class="panel-body">
-                <form #f="ngForm" (ngSubmit)="onSaveAntecedant(f.value)">
+                <form #f="ngForm" (ngSubmit)="saveAntecedant(f.value)">
                     <div class="row mb-3">
                         <div class="col">
                           <input type="text" class="form-control" name="categant" placeholder="Catégorie" ngModel #categant=ngModel required>
@@ -13,7 +13,7 @@
                         <div class="col">
                           <input type="text" class="form-control" name="descant" ngModel #descant=ngModel placeholder="description" required>
                         </div>
-                        <div *ngIf="description.invalid && (descant.dirty || descant.touched)" class="alert alert-danger">champs obligatoire</div>
+                        <div *ngIf="descant.invalid && (descant.dirty || descant.touched)" class="alert alert-danger">champs obligatoire</div>
                     </div>
                     
                     
@@ -41,13 +41,22 @@
                             <th class="border-top-0">ID </th>
                             <th class="border-top-0">catégorie</th>
                             <th class="border-top-0">Description</th>
+                            <th class="border-top-0" ></th>
+                            <th class="border-top-0" >Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let list of listAntecedant">
                             <td>{{list.idant}}</td>
-                            <td>{{list.categant}}</td>
-                            <td>{{list.descant</td>
+                             <td>{{list.categant}}</td>
+                            <td>{{list.descant}}</td> 
+                            
+                        <td><button type="button" class="btn btn-rounded btn-outline-success"
+                                (click)="editAntecedant(list.idant)"><i class="fa fa-heart"></i>
+                                Update</button></td>
+                        <td><button type="button" class="btn btn-rounded btn-outline-danger"
+                                (click)="deleteAntecedant(list.idant)"><i class="fa fa-heart"></i>
+                                Delete</button> </td> 
                         </tr>
                     </tbody>
                 </table>
