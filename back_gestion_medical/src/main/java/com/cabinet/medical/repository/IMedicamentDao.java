@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.cabinet.medical.model.Patient;
+import com.cabinet.medical.model.Medicament;
 
 @Repository
-public interface IPatientDao extends JpaRepository<Patient, String> {
-	public Patient findByCin(String cin);
+public interface IMedicamentDao extends JpaRepository<Medicament, String> {
+	public Medicament findByNummed(long nummed);
 
-	@Query("select p from Patient p where p.valid=true")
-	public Page<Patient> listPatientValid(Pageable pageable);
+	@Query("select m from Medicament m ")
+	public Page<Medicament> listMedicaments(Pageable pageable);
 }

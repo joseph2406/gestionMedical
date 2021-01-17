@@ -81,5 +81,7 @@ public class Medicament implements Serializable {
 	public void setMedicamentsOrd(Collection<OrdonnanceMed> medicamentsOrd) {
 		this.medicamentsOrd = medicamentsOrd;
 	}
+
+	
 	
 }
