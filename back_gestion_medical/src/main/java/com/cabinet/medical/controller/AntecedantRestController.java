@@ -1,6 +1,7 @@
 package com.cabinet.medical.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cabinet.medical.model.Antecedant;
-import com.cabinet.medical.model.Patient;
 import com.cabinet.medical.service.AntecedantMetier;
 
 @RestController
@@ -37,13 +37,22 @@ public class AntecedantRestController {
 		return antecedantMetier.getByDesc(description);
 	}
 
-	@RequestMapping(value = "/antecedant/{patient}", method = RequestMethod.GET)
-	public List<Antecedant> getbyPatient(@PathVariable Patient patient) {
-		return antecedantMetier.getByPatient(patient);
+	@RequestMapping(value = "/antecedant/{cinPatient}", method = RequestMethod.GET)
+	public List<Antecedant> getbyPatient(@PathVariable String cinPatient) {
+		return antecedantMetier.getByPatient(cinPatient);
 	}
 
-	@RequestMapping(value = "/antecedant/{categorie}", method = RequestMethod.GET)
-	public List<Antecedant> getbyCategorie(@RequestParam String categorie) {
-		return antecedantMetier.getByCategorie(categorie);
+	@RequestMapping(value = "/antecedant/{id}", method = RequestMethod.GET)
+	public 	Optional<Antecedant> getbyId(@PathVariable  long id) {
+		return antecedantMetier.getByIdant(id);
+	}
+	@RequestMapping(value="/antecedant/{id}", method = RequestMethod.DELETE)
+	public void deleteAntecedant(@PathVariable long id) {	
+		antecedantMetier.remove(id);
+	}
+	
+	@RequestMapping(value="/antecedant", method = RequestMethod.PUT)
+	public void updateAntecedant(@RequestBody Antecedant ant) {	
+		antecedantMetier.update(ant);
 	}
 }

@@ -1,6 +1,7 @@
 package com.cabinet.medical.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,13 +34,13 @@ public class AntecedantMetierImpl implements AntecedantMetier {
 	}
 
 	@Override
-	public void remove(Antecedant ant) {
-		antecedantDao.delete(ant);
+	public void remove(long id) {
+		antecedantDao.deleteById(id);
 	}
 
 	@Override
-	public List<Antecedant> getByCategorie(String categorie) {
-		return antecedantDao.findByCategant(categorie);
+	public Optional<Antecedant> getByIdant(long id) {
+		return antecedantDao.findById(id);
 	}
 
 	@Override
@@ -48,8 +49,9 @@ public class AntecedantMetierImpl implements AntecedantMetier {
 	}
 
 	@Override
-	public List<Antecedant> getByPatient(Patient patient) {
-		return antecedantDao.findByPatients(patient);
+	public List<Antecedant> getByPatient(String cinPatient) {
+	
+		return antecedantDao.findByPatients(cinPatient);
 	}
 
 }

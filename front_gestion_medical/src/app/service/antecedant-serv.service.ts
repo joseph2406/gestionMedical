@@ -24,8 +24,8 @@ export class AntecedantServService {
   public updateAntecedant(antecedant: Antecedant) {
     return this.httpClient.put(this.host + "antecedant", antecedant)
   }
-  public deleteAntecedant(antecedant: Antecedant) {
-    return this.httpClient.put(this.host + "antecedant", antecedant)
+  public deleteAntecedant(id: string) {
+    return this.httpClient.delete(this.host + "antecedant/"+id)
   }
 
 

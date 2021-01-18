@@ -4,23 +4,25 @@
         <div class="panel panel-default">
             <h4 class="card-title">Nouvel antecedant</h4>
             <div class="panel-body">
-                <form #f="ngForm" (ngSubmit)="saveAntecedant(f.value)">
+                <form #f="ngForm" >
                     <div class="row mb-3">
                         <div class="col">
-                          <input type="text" class="form-control" name="categant" placeholder="Catégorie" ngModel #categant=ngModel required>
+                          <input type="text" class="form-control" name="categant" placeholder="Catégorie" [(ngModel)]="categant"  required>
                         </div>
-                        <div *ngIf="categant.invalid && (categant.dirty || categant.touched)" class="alert alert-danger">champs obligatoire</div>
+                        <!-- <div *ngIf="categant.invalid && (categant.dirty || categant.touched)" class="alert alert-danger">champs obligatoire</div> -->
                         <div class="col">
-                          <input type="text" class="form-control" name="descant" ngModel #descant=ngModel placeholder="description" required>
+                          <input type="text" class="form-control" name="descant"  [(ngModel)]="descant" placeholder="description" required>
                         </div>
-                        <div *ngIf="descant.invalid && (descant.dirty || descant.touched)" class="alert alert-danger">champs obligatoire</div>
+                        <!-- <div *ngIf="descant.invalid && (descant.dirty || descant.touched)" class="alert alert-danger">champs obligatoire</div> -->
+                        
                     </div>
                     
                     
                    
                     <p></p>
                         <div class="form-group">
-                            <button class="btn btn-outline-success btn-rounded" type="submit" [disabled]="!f.valid"><i class="fa fa-check"></i>Ajouter</button>
+                            <button *ngIf="action" class="btn btn-outline-success btn-rounded" type="submit"(click)="saveAntecedant(f.value)" [disabled]="!f.valid"><i class="fa fa-check"></i>ajouter</button>                       
+                            <button *ngIf="!action" class="btn btn-outline-success btn-rounded" type="submit" (click)="updateAntecedant()"[disabled]="!f.valid"><i class="fa fa-check"></i>update</button>
                         </div>
                    
                 </form>
@@ -47,15 +49,15 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let list of listAntecedant">
-                            <td>{{list.idant}}</td>
+                            <td>{{list.id}}</td>
                              <td>{{list.categant}}</td>
                             <td>{{list.descant}}</td> 
                             
                         <td><button type="button" class="btn btn-rounded btn-outline-success"
-                                (click)="editAntecedant(list.idant)"><i class="fa fa-heart"></i>
+                                (click)="miseAJour(list)"><i class="fa fa-heart"></i>
                                 Update</button></td>
                         <td><button type="button" class="btn btn-rounded btn-outline-danger"
-                                (click)="deleteAntecedant(list.idant)"><i class="fa fa-heart"></i>
+                                (click)="deleteAntecedant(list.id)"><i class="fa fa-heart"></i>
                                 Delete</button> </td> 
                         </tr>
                     </tbody>

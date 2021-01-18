@@ -13,12 +13,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
-@Table(name = "ANTECEDANT")
 public class Antecedant implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDANT")
-	private Long idant;
+	
+	private long id;
 	@Column(name = "CATEGANT")
 	private String categant;
 	@Column(name = "DESCANT",unique = true )
@@ -26,9 +25,9 @@ public class Antecedant implements Serializable{
 	@JsonIgnore
 	@ManyToMany(mappedBy = "antecedants")
 	private Collection<Patient>patients;
-	public Antecedant(Long idant, String categant, String descant) {
+	public Antecedant(long id, String categant, String descant) {
 		super();
-		this.idant = idant;
+		this.id = id;
 		this.categant = categant;
 		this.descant = descant;
 	}
@@ -36,11 +35,11 @@ public class Antecedant implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Long getIdant() {
-		return idant;
+	public long getId() {
+		return id;
 	}
-	public void setIdant(Long idant) {
-		this.idant = idant;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getCategant() {
 		return categant;
