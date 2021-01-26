@@ -1,0 +1,98 @@
+<div class="card">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+            <h4 class="card-title">CNAM</h4>
+            <div class="panel-body">
+                <form #f="ngForm">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="text" class="form-control" name="matcnam" placeholder="Matricule"
+                                [(ngModel)]="matcnam" required>
+                        </div><br>
+                        <!-- <div *ngIf="categant.invalid && (categant.dirty || categant.touched)" class="alert alert-danger">champs obligatoire</div> -->
+                        <div class="col">
+                            <input type="date" class="form-control" name="datedebvalid" [(ngModel)]="datedebvalid">
+                        </div>
+                        <!-- <div *ngIf="descant.invalid && (descant.dirty || descant.touched)" class="alert alert-danger">champs obligatoire</div> -->
+                    </div>
+                    <p></p>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="date" class="form-control" name="datefinvalid" [(ngModel)]="datefinvalid">
+                        </div>
+
+                        <div class="col">
+                            <input type="text" class="form-control" name="typecnam" [(ngModel)]="typecnam"
+                                placeholder="type">
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="text" class="form-control" name="affiliation" [(ngModel)]="affiliation"
+                                placeholder="affiliation">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" name="patient" [(ngModel)]="patient"
+                                placeholder="cin patient">
+                        </div>
+                    </div>
+
+
+
+
+                    <p></p>
+                    <div class="form-group">
+                        <button *ngIf="action" class="btn btn-outline-success btn-rounded" type="submit"
+                            (click)="saveCnam(f.value)" [disabled]="!f.valid"><i
+                                class="fa fa-check"></i>ajouter</button>
+                        <button *ngIf="!action" class="btn btn-outline-success btn-rounded" type="submit"
+                            (click)="updateCnam()" [disabled]="!f.valid"><i class="fa fa-check"></i>update</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="row">
+        <div class="col">
+            <!-- Card -->
+
+            <div class="table-responsive">
+                <table class="table v-middle" *ngIf="listCNAM">
+                    <thead>
+                        <h4 class="card-title">Liste des antecedants</h4>
+                        <tr class="bg-light">
+                            <th class="border-top-0">Matricule </th>
+                            <th class="border-top-0">Date debut val</th>
+                            <th class="border-top-0">Date fin val</th>
+                            <th class="border-top-0">type</th>
+                            <th class="border-top-0">affiliation</th>
+                            <th class="border-top-0">cin beneficiaire</th>
+                            <th class="border-top-0">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let list of listCNAM">
+                            <td>{{list.matcnam}}</td>
+                            <td>{{list.datedebvalid}}</td>
+                            <td>{{list.datefinvalid}}</td>
+                            <td>{{list.typecnam}}</td>
+                            <td>{{list.aff}}</td>
+                            <td>{{list.patient}}</td>
+
+                            <td><button type="button" class="btn btn-rounded btn-outline-success"
+                                    (click)="miseAJour(list)"><i class="fa fa-heart"></i>
+                                    Update</button></td>
+                            <td><button type="button" class="btn btn-rounded btn-outline-danger"
+                                    (click)="deleteCnam(list.matcnam)"><i class="fa fa-heart"></i>
+                                    Delete</button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

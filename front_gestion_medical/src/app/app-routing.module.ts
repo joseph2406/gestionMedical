@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CnamComponent } from './component/cnam/cnam.component';
 import { NouvPatientComponent } from './component/nouv-patient/nouv-patient.component';
 import { UpdatePatientComponent } from './component/update-patient/update-patient.component';
 
@@ -14,6 +15,7 @@ export const Approutes: Routes = [
     children: [
       { path: 'Npatient', pathMatch: 'full', component: NouvPatientComponent}, 
       { path: 'NAntecedant', pathMatch: 'full', component: NouvAntecedantComponent},
+      { path: 'cnam', pathMatch: 'full', component: CnamComponent},
       { path: 'Updatepatient/:cin', component:UpdatePatientComponent}, 
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       {

@@ -50,8 +50,8 @@ public class AntecedantMetierImpl implements AntecedantMetier {
 
 	@Override
 	public List<Antecedant> getByPatient(String cinPatient) {
-	
-		return antecedantDao.findByPatients(cinPatient);
+
+		return antecedantDao.findByPatient(cinPatient);
 	}
 
 }

@@ -39,6 +39,7 @@ public class AntecedantRestController {
 
 	@RequestMapping(value = "/antecedant/{cinPatient}", method = RequestMethod.GET)
 	public List<Antecedant> getbyPatient(@PathVariable String cinPatient) {
+		
 		return antecedantMetier.getByPatient(cinPatient);
 	}
 
@@ -55,4 +56,6 @@ public class AntecedantRestController {
 	public void updateAntecedant(@RequestBody Antecedant ant) {	
 		antecedantMetier.update(ant);
 	}
+	
+	
 }

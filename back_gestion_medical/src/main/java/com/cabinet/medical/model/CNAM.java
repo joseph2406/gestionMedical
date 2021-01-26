@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -24,8 +25,10 @@ public class CNAM implements Serializable {
 	@Column(name = "MATCNAM")
 	private String matcnam;
 	@Column(name = "DATEDEBVALID")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date datedebvalid;
 	@Column(name = "DATEFINVALID")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date datefinvalid;
 	@Column(name = "TYPECNAM")
 	private String typecnam;
@@ -33,9 +36,10 @@ public class CNAM implements Serializable {
 	private String aff;
 	@OneToOne
 	@JoinColumn(name = "cin")
-	@JsonBackReference
+	@JsonIgnore
 	private Patient patient;
 	public CNAM(String matcnam, Date datedebvalid, Date datefinvalid, String typecnam, String aff, Patient patient) {
+		super();
 		this.matcnam = matcnam;
 		this.datedebvalid = datedebvalid;
 		this.datefinvalid = datefinvalid;
