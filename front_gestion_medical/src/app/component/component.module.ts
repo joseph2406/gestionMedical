@@ -24,7 +24,7 @@ import { CardsComponent } from './card/card.component';
 import { NouvPatientComponent } from './nouv-patient/nouv-patient.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 import { DeletePatientMessageComponent } from './delete-patient-message/delete-patient-message.component';
-import { CnamComponent } from './cnam/cnam.component';
+import { ConsultationComponent } from './consultation/consultation.component';
 
 @NgModule({
   imports: [
@@ -52,7 +52,7 @@ import { CnamComponent } from './cnam/cnam.component';
     NouvPatientComponent,
     UpdatePatientComponent,
     DeletePatientMessageComponent,
-    CnamComponent
+    ConsultationComponent
   ]
 })
 export class ComponentsModule {}

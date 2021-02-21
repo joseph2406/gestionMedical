@@ -104,7 +104,7 @@
                                 class="badge badge-success">{{p.cnam.datefinvalid|date:'mediumDate'}}</label></td>
                         <td>{{p.numtelp}}</td>
                         <td><button type="button" class="btn btn-outline-info btn-rounded"
-                                (click)=" passerListRdv(p.rdv,p.antecedants,p.apci)"><i class="fa fa-heart"></i>
+                                (click)=" passerListRdv(p.rdv,p.antecedants,p.apci,p.cons,p.cin)"><i class="fa fa-heart"></i>
                                 Info</button></td>
                         <td><button type="button" class="btn btn-rounded btn-outline-success"
                                 (click)="editPatient(p.cin)"><i class="fa fa-heart"></i>
@@ -112,7 +112,7 @@
                         <td><button type="button" class="btn btn-rounded btn-outline-danger"
                                 (click)="deletePatient(p.cin)"><i class="fa fa-heart"></i>
                                 Delete</button> </td>
-
+                            <span [p]="p.cin"></span>
                     </tr>
                 </tbody>
             </table>
@@ -132,11 +132,17 @@
             <div class="row">
                 <div class="col">
                     <!-- Card -->
-
-                    <div class="table-responsive">
-                        <table class="table v-middle" *ngIf="listRdv">
+                    <h4 class="card-title">
+                        <div class="form-check">
+                            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="optionrdv()">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Liste des Rendez-vous Par Patient                                       </label>
+                          </div>
+                        </h4>
+                    <div class="table-responsive" *ngIf="checkrdv">
+                        <table class="table v-middle">
                             <thead>
-                                <h4 class="card-title">Liste des Rendez-vous Par Patient</h4>
+                               
                                 <tr class="bg-light">
                                     <th class="border-top-0">Date Rendez-vous</th>
                                     <th class="border-top-0">Heure Rendez-vous</th>
@@ -153,9 +159,15 @@
                 </div>
                 <div class="col">
                     <!-- Card -->
-
-                    <div class="table-responsive">
-                        <table class="table v-middle" *ngIf="listAtcd">
+                    <h4 class="card-title">
+                        <div class="form-check">
+                            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="optionant()">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Liste des Antécédents Par Patient                                       </label>
+                          </div>
+                        </h4>
+                    <div class="table-responsive" *ngIf="checkant">
+                        <table class="table v-middle">
                             <thead>
                                 <h4 class="card-title">&nbsp;&nbsp; Liste des Antécédents Par Patient</h4>
                                 <tr class="bg-light">
@@ -179,11 +191,17 @@
             <div class="row">
                 <div class="col">
                     <!-- Card -->
-
-                    <div class="table-responsive">
-                        <table class="table v-middle" *ngIf="listApci">
+                    <h4 class="card-title">
+                        <div class="form-check">
+                            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="optionapci()">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Liste des APCI                                       </label>
+                          </div>
+                        </h4>
+                    <div class="table-responsive" *ngIf="checkapci">
+                        <table class="table v-middle">
                             <thead>
-                                <h4 class="card-title">Liste des APCI</h4>
+                               
                                 <tr class="bg-light">
                                     <th class="border-top-0">Code APCI</th>
                                     <th class="border-top-0">Date Début APCI</th>
@@ -201,6 +219,46 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
+         <!-- Card -->
+         <h4 class="card-title">
+            <div class="form-check">
+                <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="optioncons()">
+                <label class="form-check-label" for="defaultCheck1">
+                    Liste des Consultations                                        </label>
+              </div>
+            </h4>
+                    <div class="table-responsive" *ngIf="checkcons">
+                        <table class="table v-middle" >
+                            <thead>
+                                
+                                <tr class="bg-light">
+                                    <th class="border-top-0">Numéro</th>
+                                    <th class="border-top-0">Motif</th>
+                                    <th class="border-top-0">DateConsultation</th>
+                                    <th class="border-top-0">Détails</th>
+                                    <th class="border-top-0">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of listCons">
+                                    <td>{{list.numcons}}</td>
+                                    <td>{{list.motif}}</td>
+                                    <td>{{list.datecons|date:'mediumDate'}}</td>
+                                    <td><button type="button" class="btn btn-rounded btn-outline-success"
+                                        (click)="editConsultation(list.numcons)"><i class="fa fa-heart"></i>
+                                        Edit</button></td>
+                                <td><button type="button" class="btn btn-rounded btn-outline-danger"
+                                        (click)="deleteConsultation(list.numcons)"><i class="fa fa-heart"></i>
+                                        Delete</button> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-outline-info btn-rounded"
+                            (click)=" passerVersConsultation()"><i class="fa fa-heart"></i>
+                            New Consultation</button>
+                    </div>
+        

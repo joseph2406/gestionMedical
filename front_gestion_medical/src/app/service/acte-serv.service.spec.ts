@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CnamServService } from './cnam-serv.service';
+import { ActeServService } from './acte-serv.service';
 
-describe('CnamServService', () => {
-  let service: CnamServService;
+describe('ActeServService', () => {
+  let service: ActeServService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CnamServService);
+    service = TestBed.inject(ActeServService);
   });
 
   it('should be created', () => {

@@ -15,11 +15,12 @@ export class Patient{
     numtelp!:string
     valid!: boolean
     rdv!:RDV[]
-    apci!:APCI[]
+    apci!: APCI[]
     cnam!:CNAM
     antecedant!:Antecedant[]
     constructor(cin: string, nomp: string, prenomp: string, datenaissp: Date, datecreaD: Date, sexep: string,
-        professionp: string, adressep: string, numtelp: string,valid:boolean, rdv ?: RDV[], apci ?: APCI[], cnam ?: CNAM, antecedant ?: Antecedant[]) {
+      professionp: string, adressep: string, 
+      numtelp: string,valid:boolean) {
             this.cin=cin
             this.nomp=nomp
             this.prenomp=prenomp
@@ -31,4 +32,6 @@ export class Patient{
             this.numtelp=numtelp
             this.valid=valid
     }
+     
+      
 }

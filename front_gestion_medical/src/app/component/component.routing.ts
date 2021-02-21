@@ -16,8 +16,6 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 
 import { NouvPatientComponent } from './nouv-patient/nouv-patient.component';
-import { NouvAntecedantComponent } from '../nouv-antecedant/nouv-antecedant.component';
-import { CnamComponent } from './cnam/cnam.component';
 
 export const ComponentsRoutes: Routes = [
 	{
@@ -42,30 +40,6 @@ export const ComponentsRoutes: Routes = [
 					title: 'Progressbar',
 					urls: [
 						{ title: 'Dashboard', url: '/Npatient' },
-						{ title: 'ngComponent' },
-						{ title: 'Nouveau' }
-					]
-				}
-			},
-			{
-				path: 'NAntecedant',
-				component: NouvAntecedantComponent,
-				data: {
-					title: 'Progressbar',
-					urls: [
-						{ title: 'Dashboard', url: '/NAntecedant' },
-						{ title: 'ngComponent' },
-						{ title: 'Nouveau' }
-					]
-				}
-			},
-			{
-				path: 'cnam',
-				component: CnamComponent,
-				data: {
-					title: 'Progressbar',
-					urls: [
-						{ title: 'Dashboard', url: '/cnam' },
 						{ title: 'ngComponent' },
 						{ title: 'Nouveau' }
 					]

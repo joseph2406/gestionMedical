@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CnamComponent } from './component/cnam/cnam.component';
+import { ConsultationComponent } from './component/consultation/consultation.component';
 import { NouvPatientComponent } from './component/nouv-patient/nouv-patient.component';
 import { UpdatePatientComponent } from './component/update-patient/update-patient.component';
 
 import { FullComponent } from './layouts/full/full.component';
-import { NouvAntecedantComponent } from './nouv-antecedant/nouv-antecedant.component';
 
 export const Approutes: Routes = [
   
@@ -14,9 +13,8 @@ export const Approutes: Routes = [
     component: FullComponent,
     children: [
       { path: 'Npatient', pathMatch: 'full', component: NouvPatientComponent}, 
-      { path: 'NAntecedant', pathMatch: 'full', component: NouvAntecedantComponent},
-      { path: 'cnam', pathMatch: 'full', component: CnamComponent},
       { path: 'Updatepatient/:cin', component:UpdatePatientComponent}, 
+      { path: 'Nconsultation/:cin', component: ConsultationComponent}, 
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',

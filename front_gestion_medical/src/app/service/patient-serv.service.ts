@@ -8,7 +8,7 @@ import { Patient } from '../model/patient';
 export class PatientServService {
 
   constructor(private httpClient:HttpClient) { }
-  host:string="http://localhost:5000/"
+  host:string="http://localhost:8183/"
   errorMsg!: string;
   public getPatient(page:number,size:number){
     /* let Username="medecin"

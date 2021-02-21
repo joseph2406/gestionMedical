@@ -1,0 +1,153 @@
+<div align="center"> <h1><b>Fiche  Consultation Du Patient:</b></h1> </div>
+    <br>
+           <div class="row" *ngIf="patient">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-sm-3"><b><input type="text" class="form-control"  placeholder="{{ncin}}"></b></div>
+                             
+                <div class="col-sm-3"> <b><input type="text" class="form-control" placeholder="{{patient.prenomp}}"></b></div>
+                             
+                 <div class="col-sm-3"><b><input type="text" class="form-control" placeholder="{{patient.nomp}}"></b></div>
+            
+            </div>
+<p></p><p></p>
+<div class="container">
+<div class="card">
+<div class="row">
+<div class="col">
+    <h4 class="card-title" > Examen Clinique :</h4>
+    <div class="panel-body">
+        <form #c="ngForm" (ngSubmit)="onSaveConsultation(c.value)">
+            <div class="col">
+                <input type="date" class="form-control" name="datecons" [ngModel]="today|date:'yyyy-MM-dd'" ngModel #datecons=ngModel>
+            </div>
+            <div class="col">
+               <select class=form-control name="motif" ngModel #motif=ngModel required>
+                <option  value="" disabled selected hidden>Motif</option>
+                <option *ngFor="let m of Lmotif" value="{{m}}">{{m}}</option>
+              </select>
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" name="poids" placeholder="le poids" ngModel #poids=ngModel required>
+             </div>
+             <div class="col">
+                <input type="number" class="form-control" name="temperature" placeholder="temperature" ngModel #temperature=ngModel required>
+             </div>
+             <div class="col">
+                <input type="number" class="form-control" name="tension" placeholder="tension" ngModel #tension=ngModel required>
+             </div>
+             <div class="col">
+                <input type="number" class="form-control" name="perimetre" placeholder="perimetre" ngModel #perimetre=ngModel>
+             </div>
+            <div class="col">
+                <textarea class="form-control" rows="4" id="comment" name="resexamen" placeholder="Observation après examen" ngModel #resexamen=ngModel required></textarea>
+              </div>  
+            <p></p>
+            <div class="form-group">
+                <button class="btn btn-outline-success btn-rounded" type="submit" [disabled]="!c.valid"><i class="fa fa-check"></i>Enregistrer</button>
+            </div>  
+        </form>
+    </div>
+</div>
+<div class="col">
+    <!-- Card -->
+      <div class="table-responsive" >
+        <table class="table v-middle">
+            <thead>
+                <h4 class="card-title">&nbsp;&nbsp; Antécédents :</h4>
+                <tr class="bg-light">
+                    <th class="border-top-0">Type Antécédent</th>
+                    <th class="border-top-0">Description</th>
+
+                </tr>
+            </thead>
+            <tbody *ngIf="patient">
+                <tr *ngFor="let l of patient.antecedants">
+                    <td>{{l.categant}}</td>
+                    <td>{{l.descant}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col">
+<h4 class="card-title">
+<div class="form-check">
+    <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="option()">
+<label class="form-check-label" for="defaultCheck1">Autres Antécédents :</label>
+</div>
+</h4>
+<div *ngIf="check">
+    <form #an="ngForm" (ngSubmit)="onSaveAntecedentPatient(an.value)">
+    <div class="row mb-3">
+    <select class="form-control" id="exampleFormControlSelect"  (change)="selectiondescCategAnt($event.target.value)" 
+    name="categant" ngModel #categant=ngModel>
+        <option  value="" disabled selected hidden>choisir une catégorie antécédant</option>
+        <option *ngFor="let c of categAnt" value="{{c}}" >{{c}}</option>
+    </select>
+    </div>   
+    <div class="row mb-3">
+    <select multiple class="form-control" id="exampleFormControlSelect1" 
+    name="descant" ngModel #descant=ngModel>
+        <option  value="" disabled selected hidden>liste des descriptions</option>
+        <option *ngFor="let d of descbyCat" value="{{d}}" >{{d}}</option>
+    </select>
+    </div> 
+    <p></p>
+     <div class="form-group">
+        <button class="btn btn-outline-success btn-rounded" type="submit" ><i class="fa fa-check"></i>Valider</button>
+     </div>     
+    </form>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col">
+        <h4 class="card-title">
+            <div class="form-check">
+                <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="option2()">
+            <label class="form-check-label" for="defaultCheck1">Actes :</label>
+            </div>
+            </h4>
+            <div *ngIf="checkacte">
+                <form #ac="ngForm" (ngSubmit)="onSaveActecons(ac.value)">
+                <div class="row">
+                    <div class="col">
+                <label>Sélectionner un acte</label>
+                <select multiple class="form-control" id="exampleFormControlSelect3" name="nameacte" ngModel #nameacte=ngModel>
+                    <option *ngFor="let a of actes" value="{{a.nameacte}}" >{{a.nameacte}}</option>
+                </select>
+                <p></p>
+                <button class="btn btn-outline-success btn-rounded" type="submit"><i class="fa fa-check"></i>Valider</button>
+                </div>
+                </div>       
+                </form>
+            </div> 
+</div> 
+<div class="col">
+    <h4 class="card-title" >
+        <div class="form-check">
+            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck1" (change)="option1()">
+        <label class="form-check-label" for="defaultCheck1">Ajouter un Acte:</label>
+        </div>
+        </h4>
+    <div class="panel-body" *ngIf="checknew">
+        <form #t="ngForm" (ngSubmit)="onSaveActe(t.value)">
+            <div class="col">
+            <input type="text" class="form-control" name="nameacte" placeholder="donner nom de l'acte " ngModel #nameacte=ngModel required>
+             </div>
+             <div class="col">
+                <input type="number" class="form-control" name="prixacte" placeholder="prix acte" ngModel #prixacte=ngModel required>
+             </div>
+            <p></p>
+            <div class="form-group">
+                <button class="btn btn-outline-success btn-rounded" type="submit"><i class="fa fa-check"></i>Enregistrer</button>
+            </div>  
+        </form>
+    </div>
+</div>
+
+</div>         
+</div> 
+</div>          
+                    

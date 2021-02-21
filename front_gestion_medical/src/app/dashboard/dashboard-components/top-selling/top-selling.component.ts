@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePatientMessageComponent } from 'src/app/component/delete-patient-message/delete-patient-message.component';
 import { Antecedant } from 'src/app/model/antecedant';
 import { APCI } from 'src/app/model/apci';
+import { Consultation } from 'src/app/model/consultation';
 import { Patient } from 'src/app/model/patient';
 import { RDV } from 'src/app/model/rdv';
 import { ParentToChildService } from 'src/app/service/parent-to-child.service';
@@ -26,18 +27,24 @@ public patients:any=undefined;
 sms: any;
 data:any
 verif:boolean=false
+checkcons:boolean=false;
+checkapci:boolean=false;
+checkant:boolean=false;
+checkrdv:boolean=false;
+p:string='';
 servpatient!: PatientServService;
 passList:ParentToChildService
 patient!:Patient
   public listRdv: RDV[] = [];
   public listAtcd:Antecedant[] = [];
   public listApci:APCI[]=[]
+  public listCons:Consultation[]=[]
  private matDialog: MatDialog;
   constructor(servpatient:PatientServService,passList:ParentToChildService,
     private router: Router,protected modalService: NgbModal ,public formBuilder: FormBuilder,  matDialog:MatDialog) { 
     this.servpatient=servpatient;
     this.passList=passList;
-    this.matDialog=matDialog
+    this.matDialog=matDialog;
   }
   
   ngOnInit(): void {
@@ -54,10 +61,12 @@ patient!:Patient
         this.patients =null;
         })
   }
-  passerListRdv(list1:RDV[],list2:Antecedant[],list3:APCI[]){
-     this.listRdv=list1
+  passerListRdv(list1:RDV[],list2:Antecedant[],list3:APCI[],list4:Consultation[],cin:string){
+    this.p=cin
+    this.listRdv=list1
      this.listAtcd=list2
      this.listApci=list3
+     this.listCons=list4
     if(this.listRdv.length==0){
       this.sms="Pas De Rendez-vous Pour ce Patient"
     }
@@ -95,4 +104,37 @@ this.ngOnInit()
       this.loadPatients();
     });})
    }
+   optioncons():void{
+     if (this.checkcons==false){
+      this.checkcons=true;
+     }else{
+      this.checkcons=false;
+     }
+    
+   }
+   optionapci():void{
+    if (this.checkapci==false){
+     this.checkapci=true;
+    }else{
+     this.checkapci=false;
+    }
+   
+  }
+  optionant():void{
+    if (this.checkant==false){
+     this.checkant=true;
+    }else{
+     this.checkant=false;
+    }
+  }
+  optionrdv():void{
+    if (this.checkrdv==false){
+     this.checkrdv=true;
+    }else{
+     this.checkrdv=false;
+    }
+  }
+  passerVersConsultation(){  
+    this.router.navigateByUrl("/Nconsultation/"+this.p);
+  }
 }
